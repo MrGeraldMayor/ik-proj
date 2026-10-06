@@ -10,7 +10,11 @@ body {
     font-family: Arial, sans-serif;
 }
 
-/* Header */
+
+/* =========================
+   Header
+========================= */
+
 .header {
     width: 100%;
     background-color: #0d3496;
@@ -24,14 +28,17 @@ body {
     margin: auto;
 }
 
-/* Header layout */
+/* Header Layout */
 .header .container {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-/* Logo */
+/* =========================
+   Logo
+========================= */
+
 .logo a {
     color: white;
     text-decoration: none;
@@ -39,9 +46,13 @@ body {
     font-weight: bold;
 }
 
-/* Navigation */
+/* =========================
+   Navigation
+========================= */
+
 .navbar {
     display: flex;
+    align-items: center;
     gap: 30px;
 }
 
@@ -49,13 +60,119 @@ body {
     color: white;
     text-decoration: none;
     font-size: 16px;
-    transition: 0.3s;
+    transition: color 0.3s ease;
 }
 
 .navbar a:hover {
     color: #00bcd4;
 }
 
+/* =========================
+   Hamburger Menu
+========================= */
+
+.menu-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 28px;
+    height: 3px;
+    background-color: white;
+    margin: 5px 0;
+    transition: 0.3s ease;
+}
+
+/* =========================
+   Tablet / Mobile
+========================= */
+
+@media (max-width: 768px) {
+
+    .header {
+        padding: 16px 0;
+    }
+
+    .header .container {
+        position: relative;
+    }
+
+    /* Show hamburger */
+    .menu-toggle {
+        display: block;
+        z-index: 1001;
+    }
+
+    /* Mobile Navigation */
+    .navbar {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #0d3496;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+
+        max-height: 0;
+        overflow: hidden;
+
+        transition: max-height 0.3s ease;
+    }
+
+    /* Show menu */
+    .navbar.active {
+        max-height: 400px;
+        padding: 10px 0;
+    }
+
+    .navbar a {
+        width: 100%;
+        text-align: center;
+        padding: 15px 0;
+    }
+
+    .navbar a:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Hamburger animation */
+    .menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+    }
+}
+
+/* =========================
+   Small Phones
+========================= */
+
+@media (max-width: 480px) {
+
+    .container {
+        width: 92%;
+    }
+
+   .logo { display: none; }
+
+    .menu-toggle span {
+        width: 25px;
+    }
+}
 
 
 
